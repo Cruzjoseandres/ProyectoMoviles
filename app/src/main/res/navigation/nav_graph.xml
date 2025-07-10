@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchCategoriesFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.SearchCategoriesFragment"
+        android:label="fragment_search_categories"
+        tools:layout="@layout/fragment_search_categories">
+        <action
+            android:id="@+id/action_searchCategoriesFragment_to_crearCategoriaFragment"
+            app:destination="@id/crearCategoriaFragment" />
+        <action
+            android:id="@+id/action_searchCategoriesFragment_to_trabajadoresCategoriasFragments"
+            app:destination="@id/trabajadoresCategoriasFragments" />
+        <action
+            android:id="@+id/action_searchCategoriesFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/crearCategoriaFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.CrearCategoriaFragment"
+        android:label="fragment_crear_categoria"
+        tools:layout="@layout/fragment_crear_categoria" >
+        <action
+            android:id="@+id/action_crearCategoriaFragment_to_searchCategoriesFragment"
+            app:destination="@id/searchCategoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trabajadoresCategoriasFragments"
+        android:name="com.example.proyectodemoviles.ui.fragments.TrabajadoresCategoriasFragments"
+        android:label="fragment_trabajadores_categorias_fragments"
+        tools:layout="@layout/fragment_trabajadores_categorias_fragments">
+        <argument
+            android:name="categoryId"
+            app:argType="integer" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_trabajadoresCategoriasFragments_to_detalleTrabajador"
+            app:destination="@id/detalleTrabajador" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleTrabajador"
+        android:name="com.example.proyectodemoviles.ui.fragments.DetalleTrabajadorFragment"
+        android:label="fragment_detalle_trabajador"
+        tools:layout="@layout/fragment_detalle_trabajador" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detalleTrabajador_to_trabajadoresCategoriasFragments"
+            app:destination="@id/trabajadoresCategoriasFragments" />
+        <action
+            android:id="@+id/action_detalleTrabajador_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchCategoriesFragment"
+            app:destination="@id/searchCategoriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+
+</navigation>
