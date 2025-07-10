@@ -31,6 +31,11 @@ class HomeFragment : Fragment() {
             val action = HomeFragmentDirections.actionHomeFragmentToChatFragment()
             findNavController().navigate(action)
         }
+
+        binding.btnCategorias.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchCategoriesFragment()
+            findNavController().navigate(action)
+        }
     }
 
     private fun setupObservers() {

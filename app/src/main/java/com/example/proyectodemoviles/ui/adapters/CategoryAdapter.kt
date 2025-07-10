@@ -9,12 +9,14 @@ import com.example.proyectodemoviles.models.ListCategory
 
 
 class CategoryAdapter(
-    var items: ListCategory
+    items: ListCategory
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
     private var onCategoryClickListener: OnCategoryClick? = null
+    private var filteredItems: ListCategory = ArrayList(items)
+    private var allItems: ListCategory = ArrayList(items)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater =LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(parent.context)
         val binding = ItemCategoryBinding.inflate(
             inflater,
             parent,
@@ -28,18 +30,35 @@ class CategoryAdapter(
     }
 
     override fun getItemCount(): Int {
-        return items.size
+        return filteredItems.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items[position]
+        val item = filteredItems[position]
         holder.bind(item, onCategoryClickListener)
     }
 
     fun setData(newData: ListCategory) {
-        this.items = newData
+        this.allItems = ArrayList(newData)
+        this.filteredItems = ArrayList(newData)
         notifyDataSetChanged()
     }
+
+    fun filter(query: String) {
+        filteredItems = if (query.isEmpty()) {
+            ArrayList(allItems)
+        } else {
+            val filteredList = arrayListOf<Category>()
+            for (item in allItems) {
+                if (item.name.lowercase().contains(query.lowercase())) {
+                    filteredList.add(item)
+                }
+            }
+            filteredList
+        }
+        notifyDataSetChanged()
+    }
+
     class ViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Category, listener: OnCategoryClick?) {
@@ -52,6 +71,5 @@ class CategoryAdapter(
 
     interface OnCategoryClick {
         fun onCategoryClick(categoria: Category)
-
     }
 }

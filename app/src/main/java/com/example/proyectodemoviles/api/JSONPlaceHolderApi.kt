@@ -1,5 +1,6 @@
 package com.example.proyectodemoviles.api
 
+import com.example.proyectodemoviles.models.Chat
 import com.example.proyectodemoviles.models.ListAppointments
 import com.example.proyectodemoviles.models.User
 import com.example.proyectodemoviles.models.ListCategory
@@ -8,6 +9,8 @@ import com.example.proyectodemoviles.models.LoginResponse
 import com.example.proyectodemoviles.models.RegisterResponse
 import com.example.proyectodemoviles.models.Trabajadores
 import com.example.proyectodemoviles.models.TrabajadoresList
+import com.example.proyectodemoviles.models.ChatList
+import com.example.proyectodemoviles.models.EnviarMensaje
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -50,4 +53,18 @@ interface JSONPlaceHolderApi {
     suspend fun getAppointments(
         @Header("Authorization") token: String
     ): ListAppointments
+
+
+    @GET("appointments/{id}/chats")
+    suspend fun getChatByAppointmentId(
+        @Path("id") id: Int,
+        @Header("Authorization") token: String
+    ): ChatList
+
+    @POST("appointments/{id}/chats")
+    suspend fun sendMessage(
+        @Path("id") appointmentId: Int,
+        @Body messageRequest: EnviarMensaje,
+        @Header("Authorization") token: String
+    ): EnviarMensaje
 }

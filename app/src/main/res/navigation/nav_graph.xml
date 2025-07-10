@@ -88,7 +88,11 @@
         android:id="@+id/chatFragment"
         android:name="com.example.proyectodemoviles.ui.fragments.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment_to_detalleChatFragment"
+            app:destination="@id/detalleChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.proyectodemoviles.ui.fragments.HomeFragment"
@@ -99,6 +103,21 @@
             app:destination="@id/searchCategoriesFragment" />
         <action
             android:id="@+id/action_homeFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleChatFragment"
+        android:name="com.example.proyectodemoviles.ui.fragments.DetalleChatFragment"
+        android:label="fragment_detalle_chat"
+        tools:layout="@layout/fragment_detalle_chat" >
+        <argument
+            android:name="appointmentId"
+            app:argType="integer" />
+        <argument
+            android:name="workId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detalleChatFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
     </fragment>
 

@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="sent_message_bg">#E3F2FD</color>
+    <color name="received_message_bg">#E8F5E9</color>
 </resources>
