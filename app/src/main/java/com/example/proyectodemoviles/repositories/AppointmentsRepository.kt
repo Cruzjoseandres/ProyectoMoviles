@@ -8,4 +8,6 @@ object AppointmentsRepository {
             .getJsonPlaceholderApi()
             .getAppointments("Bearer $token")
     }
+
+
 }

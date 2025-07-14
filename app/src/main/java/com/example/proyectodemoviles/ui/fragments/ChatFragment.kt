@@ -72,7 +72,12 @@ class ChatFragment : Fragment(), ChatsListAdapter.OnChatClick {
     override fun onchatClick(citas: Appointments) {
         Toast.makeText(context, "Chat seleccionado: ${citas.worker?.user?.name}", Toast.LENGTH_SHORT).show()
         val action = ChatFragmentDirections
-            .actionChatFragmentToDetalleChatFragment(citas.id, citas.worker_id)
+            .actionChatFragmentToDetalleChatFragment(
+                appointmentId = citas.id,
+                workId = citas.worker_id,
+                workerId = 0,  // Estos valores no se usarán en chats existentes
+                categoryId = 0  // Estos valores no se usarán en chats existentes
+            )
         findNavController().navigate(action)
     }
 }

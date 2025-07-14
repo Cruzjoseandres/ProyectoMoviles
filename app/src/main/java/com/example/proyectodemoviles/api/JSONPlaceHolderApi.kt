@@ -1,5 +1,6 @@
 package com.example.proyectodemoviles.api
 
+import com.example.proyectodemoviles.models.Appointments
 import com.example.proyectodemoviles.models.Chat
 import com.example.proyectodemoviles.models.ListAppointments
 import com.example.proyectodemoviles.models.User
@@ -10,6 +11,7 @@ import com.example.proyectodemoviles.models.RegisterResponse
 import com.example.proyectodemoviles.models.Trabajadores
 import com.example.proyectodemoviles.models.TrabajadoresList
 import com.example.proyectodemoviles.models.ChatList
+import com.example.proyectodemoviles.models.CreateChat
 import com.example.proyectodemoviles.models.EnviarMensaje
 import retrofit2.Response
 import retrofit2.http.Body
@@ -67,4 +69,10 @@ interface JSONPlaceHolderApi {
         @Body messageRequest: EnviarMensaje,
         @Header("Authorization") token: String
     ): EnviarMensaje
+
+    @POST("appointments")
+    suspend fun createChat (
+        @Body createChat: CreateChat,
+        @Header("Authorization") token: String
+    ): Appointments
 }

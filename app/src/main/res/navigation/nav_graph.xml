@@ -81,8 +81,8 @@
             android:id="@+id/action_detalleTrabajador_to_trabajadoresCategoriasFragments"
             app:destination="@id/trabajadoresCategoriasFragments" />
         <action
-            android:id="@+id/action_detalleTrabajador_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            android:id="@+id/action_detalleTrabajador_to_detalleChatFragment"
+            app:destination="@id/detalleChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -110,15 +110,30 @@
         android:name="com.example.proyectodemoviles.ui.fragments.DetalleChatFragment"
         android:label="fragment_detalle_chat"
         tools:layout="@layout/fragment_detalle_chat" >
+
         <argument
             android:name="appointmentId"
+            android:defaultValue="0"
             app:argType="integer" />
         <argument
             android:name="workId"
+            android:defaultValue="0"
             app:argType="integer" />
+        <argument
+            android:name="workerId"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="categoryId"
+            android:defaultValue="0"
+            app:argType="integer" />
+
         <action
             android:id="@+id/action_detalleChatFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+
+
+
     </fragment>
 
 </navigation>

@@ -24,7 +24,7 @@ data class Trabajadores(
     val user: User,
 
     @SerializedName("categories")
-    val categories: ListCategory,
+    val categories: ListCategory?,
 
     @SerializedName("reviews")
     val reviews: ReviewsList
